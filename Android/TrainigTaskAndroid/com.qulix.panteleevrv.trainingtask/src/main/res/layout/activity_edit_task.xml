@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activity_detail_task"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.qulix.panteleevrv.trainingtask.client.ui.task.DetailTaskActivity">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/linear_detail_margin"
+                android:layout_marginRight="@dimen/linear_detail_margin"
+                style="@style/VerticalLinear">
+
+            <TextView
+                    android:text="@string/task_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_header_margin_top"
+                    style="@style/HeaderFieldTextView" />
+
+            <EditText
+                    android:id="@+id/taskId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    style="@style/DefaultEditText" />
+
+            <TextView
+                    android:id="@+id/projectHeaderTextView"
+                    android:text="@string/task_project"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_header_margin_top"
+                    style="@style/HeaderFieldTextView" />
+
+            <com.qulix.panteleevrv.trainingtask.client.ui.task.ListViewerView
+                    android:id="@+id/taskProjects"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hint="@string/select_project"
+                    app:header="@string/select_project"/>
+
+            <TextView
+                    android:text="@string/task_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_header_margin_top"
+                    style="@style/HeaderFieldTextView" />
+
+            <EditText
+                    android:id="@+id/taskName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/DefaultEditText" />
+
+            <TextView
+                    android:text="@string/task_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_header_margin_top"
+                    style="@style/HeaderFieldTextView" />
+
+            <EditText
+                    android:id="@+id/taskTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/NumberEditText" />
+
+            <TextView
+                    android:text="@string/task_start_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_header_margin_top"
+                    style="@style/HeaderFieldTextView" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/text_header_margin_top">
+
+                <EditText
+                        android:id="@+id/taskStart"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/DateEditText" />
+
+                <ImageView
+                        android:id="@+id/taskDateStartButton"
+                        android:layout_width="@dimen/image_size"
+                        android:layout_height="@dimen/image_size"
+                        android:layout_marginLeft="@dimen/image_margin"
+                        android:src="@drawable/calendar" />
+
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/task_end_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_header_margin_top"
+                    style="@style/HeaderFieldTextView" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <EditText
+                        android:id="@+id/taskEnd"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/DateEditText" />
+
+                <ImageView
+                        android:id="@+id/taskDateEndButton"
+                        android:layout_width="@dimen/image_size"
+                        android:layout_height="@dimen/image_size"
+                        android:layout_marginLeft="@dimen/image_margin"
+                        android:src="@drawable/calendar" />
+
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/task_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_header_margin_top"
+                    style="@style/HeaderFieldTextView" />
+
+            <Spinner
+                    android:id="@+id/statuses"
+                    android:prompt="@string/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/DialogSpinner" />
+
+            <TextView
+                    android:text="@string/task_employee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_header_margin_top"
+                    style="@style/HeaderFieldTextView" />
+
+            <com.qulix.panteleevrv.trainingtask.client.ui.task.ListViewerView
+                    android:id="@+id/taskEmployees"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hint="@string/select_employee"
+                    app:header="@string/select_employee"/>
+
+            <Button
+                    android:id="@+id/saveTask"
+                    android:text="@string/save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/button_margin_top" />
+
+            <Button
+                    android:id="@+id/backTaskList"
+                    android:text="@string/cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/button_margin_bottom" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

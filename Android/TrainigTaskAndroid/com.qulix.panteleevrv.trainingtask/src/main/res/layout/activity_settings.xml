@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_setting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.qulix.panteleevrv.trainingtask.client.ui.settingsService.SettingsActivity">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/linear_detail_margin"
+            android:layout_marginRight="@dimen/linear_detail_margin"
+            style="@style/VerticalLinear">
+
+        <TextView
+                android:text="@string/url_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_header_margin_top"
+                style="@style/HeaderFieldTextView" />
+
+        <EditText
+                android:id="@+id/url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        <TextView
+                android:text="@string/count_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_header_margin_top"
+                style="@style/HeaderFieldTextView" />
+
+        <EditText
+                android:id="@+id/itemsCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/NumberEditText" />
+
+        <Button
+                android:id="@+id/saveSettings"
+                android:text="@string/save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/button_margin_top"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

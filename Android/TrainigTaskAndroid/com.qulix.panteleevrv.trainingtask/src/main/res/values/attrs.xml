@@ -1,0 +1,9 @@
+<resources>
+    <!-- Атрибуты ListViewDialog -->
+    <declare-styleable name="ListViewerView">
+        <!-- Placeholder текстового поля -->
+        <attr name="hint" format="string" />
+        <!-- Заголовок диалога -->
+        <attr name="header" format="string" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_task_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.qulix.panteleevrv.trainingtask.client.ui.task.TaskListActivity">
+
+    <TextView
+            android:id="@+id/emptyTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            style="@style/EmptyText" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/VerticalLinear">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_header_height"
+                style="@style/LinearHeader">
+
+            <TextView
+                    android:text="@string/id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/task_id_weight"
+                    style="@style/ListHeaderText" />
+
+            <TextView
+                    android:text="@string/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/task_status_weight"
+                    style="@style/ListHeaderText" />
+
+            <TextView
+                    android:id="@+id/taskProjectHeader"
+                    android:text="@string/project"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/task_project_weight"
+                    style="@style/ListHeaderText" />
+
+            <TextView
+                    android:text="@string/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/task_name_weight"
+                    style="@style/ListHeaderText" />
+
+        </LinearLayout>
+
+        <ListView
+                android:id="@+id/tasks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</RelativeLayout>

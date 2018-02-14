@@ -1,0 +1,55 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="TasksWindowsPhone.CustomControls.CalendarControl.CalendarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:customControls="clr-namespace:WPControls;assembly=WPControls"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="GridHeader"
+              Background="SteelBlue"
+              Height="50">
+            <TextBlock x:Name="PageHeaderTextBlock"
+                       Text="Calendar"
+                       FontSize="26"
+                       Margin="6"
+                       TextAlignment="Center" />
+        </Grid>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" VerticalAlignment="Center">
+            <customControls:Calendar x:Name="mainCalendar"
+                                     SelectedDate="{Binding Path=SelectedDate, Mode=TwoWay}"/>
+        </Grid>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True"
+                              Mode="Default"
+                              IsMenuEnabled="True"
+                              BackgroundColor="{StaticResource AccentAppBackGroundColor}">
+            <shell:ApplicationBarIconButton x:Name="SelectDate"
+                                            IconUri="/Assets/Ico/check.png"
+                                            Text="ok"
+                                            Click="SelectDate_OnClick" />
+            <shell:ApplicationBarIconButton x:Name="UpdateButton"
+                                            IconUri="/Assets/Ico/cancel.png"
+                                            Text="cancel"
+                                            Click="UpdateButton_OnClick" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

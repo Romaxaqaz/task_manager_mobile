@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_employee_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.qulix.panteleevrv.trainingtask.client.ui.employee.EmployeeListActivity">
+
+    <TextView
+            android:id="@+id/emptyEmployee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            style="@style/EmptyText" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/VerticalLinear">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_header_height"
+                style="@style/LinearHeader">
+
+            <TextView
+                    android:text="@string/id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/employee_id_weight"
+                    style="@style/ListHeaderText" />
+
+            <TextView
+                    android:text="@string/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/employee_name_weight"
+                    style="@style/ListHeaderText" />
+
+            <TextView
+                    android:text="@string/surname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/employee_surname_weight"
+                    style="@style/ListHeaderText" />
+
+            <TextView
+                    android:text="@string/position"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@integer/employee_position_weight"
+                    style="@style/ListHeaderText" />
+
+        </LinearLayout>
+
+        <ListView
+                android:id="@+id/employees"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</RelativeLayout>

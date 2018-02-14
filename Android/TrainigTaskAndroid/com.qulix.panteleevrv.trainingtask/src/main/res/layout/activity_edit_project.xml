@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_edit_project"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.qulix.panteleevrv.trainingtask.client.ui.project.DetailProjectActivity">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/linear_detail_margin"
+                android:layout_marginRight="@dimen/linear_detail_margin"
+                style="@style/VerticalLinear">
+
+            <TextView
+                    android:text="@string/project_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_header_margin_top"
+                    style="@style/HeaderFieldTextView" />
+
+            <EditText
+                    android:id="@+id/projectId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    style="@style/DefaultEditText" />
+
+            <TextView
+                    android:text="@string/project_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_header_margin_top"
+                    style="@style/HeaderFieldTextView" />
+
+            <EditText
+                    android:id="@+id/projectName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/DefaultEditText" />
+
+            <TextView
+                    android:text="@string/project_short_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_header_margin_top"
+                    style="@style/HeaderFieldTextView" />
+
+            <EditText
+                    android:id="@+id/projectShortName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/DefaultEditText" />
+
+            <Button
+                    android:id="@+id/saveProject"
+                    android:text="@string/save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/button_margin_top" />
+
+            <Button
+                    android:id="@+id/backProjectList"
+                    android:text="@string/cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/button_margin_bottom" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

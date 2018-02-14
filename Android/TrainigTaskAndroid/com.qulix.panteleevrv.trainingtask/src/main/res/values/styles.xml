@@ -1,0 +1,76 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:textColorHint">@color/hintColor</item>
+    </style>
+
+    <style name="SplashTheme" parent="android:Theme.Black">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="HeaderFieldTextView" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/accentTextColor</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+    </style>
+
+    <style name="DialogSpinner" parent="@android:style/Widget.Holo.Spinner">
+        <item name="android:spinnerMode">dialog</item>
+    </style>
+
+    <style name="DateEditText" parent="android:Widget.EditText">
+        <item name="android:maxLength">@integer/date_length</item>
+        <item name="android:inputType">date</item>
+        <item name="android:textSize">@dimen/edit_text_size</item>
+    </style>
+
+    <style name="NumberEditText" parent="android:Widget.EditText">
+        <item name="android:maxLength">@integer/time_length</item>
+        <item name="android:inputType">number</item>
+        <item name="android:textSize">@dimen/edit_text_size</item>
+    </style>
+
+    <style name="VerticalLinear">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="HorizontalLinear">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="LinearHeader">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/accentColor</item>
+    </style>
+
+    <style name="EmptyText" parent="android:Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/empty_list</item>
+        <item name="android:textSize">@dimen/empty_list_text_size</item>
+    </style>
+
+    <style name="ListHeaderText" parent="android:Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="ListItemText" parent="android:Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/default_text_ize</item>
+    </style>
+
+    <style name="NonEditableEditText" parent="android:Widget.EditText">
+        <item name="android:textSize">@dimen/edit_text_size</item>
+        <item name="android:clickable">true</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:inputType">textNoSuggestions</item>
+    </style>
+
+    <style name="DefaultEditText" parent="android:Widget.EditText">
+        <item name="android:textSize">@dimen/edit_text_size</item>
+    </style>
+
+</resources>

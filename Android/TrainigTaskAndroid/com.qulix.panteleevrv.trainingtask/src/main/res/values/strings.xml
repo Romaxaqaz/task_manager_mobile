@@ -1,0 +1,126 @@
+<resources>
+    <!-- Название приложения -->
+    <string name="app_name">Training Task Android</string>
+
+    <!-- Главная страница -->
+    <string name="tasks_form">Задачи</string>
+    <string name="projects_form">Проекты</string>
+    <string name="employees_form">Персоны</string>
+    <string name="main_activity_header">Главная страница</string>
+
+    <!-- Сотрудник -->
+    <string name="employee_id">Идентификатор</string>
+    <string name="employee_name">Имя</string>
+    <string name="employee_surname">Фамилия</string>
+    <string name="employee_position">Должность</string>
+    <string name="employee_activity_header">Список сотрудников</string>
+    <string name="add_employee_header">Добавление сотрудника</string>
+    <string name="update_employee_header">Редактирование сотрудника</string>
+    <string name="add_employee">Добавить сотрудника</string>
+    <string name="employee_name_error">Имя сотрудника обязательно для заполнения</string>
+    <string name="employee_surname_error">Фамилия сотрудника обязательна для заполнения</string>
+    <string name="employee_position_error">Должность сотрудника обязательна для заполнения</string>
+    <string name="delete_employee_header">Удаление сотрудника</string>
+    <string name="delete_employee_message">Вы уверены, что хотите удалить сотрудника?</string>
+    <string name="select_employee">Выберите сотрудника</string>
+
+    <!-- Проекты -->
+    <string name="project_activity_header">Список проектов</string>
+    <string name="add_project">Добавить проект</string>
+    <string name="project_name_error">Название проекта обязательно для заполнения</string>
+    <string name="project_short_name_error">Сокращенное название проекта обязательно для заполнения</string>
+    <string name="project_description_error">Описание проекта обязательно для заполнения</string>
+    <string name="project_id">Идентификатор проекта</string>
+    <string name="project_name">Название проекта</string>
+    <string name="project_short_name">Сокращенное название проекта</string>
+    <string name="project_description">Описание проекта</string>
+    <string name="detail_project_header">Редактирование проекта</string>
+    <string name="add_project_header">Добавление проекта</string>
+    <string name="delete_project_header">Удаление проекта</string>
+    <string name="delete_project_message">Вы уверены, что хотите удалить проект?</string>
+    <string name="select_project">Выберите проект</string>
+
+    <!-- Задача -->
+    <string name="task_header">Задача</string>
+    <string name="add_task_header">Добавление задачи</string>
+    <string name="edit_project_header">Редактирование задачи</string>
+    <string name="add_task">Добавить задачу</string>
+    <string name="activity_task_title">Список задач</string>
+    <string name="task_view">Просмотреть задачи</string>
+    <string name="task_name_error">Название задачи обязательно для заполнения</string>
+    <string name="task_status_error">Необходимо выбрать статус задачи</string>
+    <string name="task_employee_error">Необходимо выбрать исполнителя задачи</string>
+    <string name="task_project_error">Необходимо выбрать проект для задачи</string>
+    <string name="task_start_date_error">Дата начала задачи обязательна для заполнения</string>
+    <string name="task_end_date_error">Дата окончания задачи обязательна для заполнения</string>
+    <string name="task_start_before_error">Дата начала задачи не может быть позднее даты окончания</string>
+    <string name="task_time_error">Время выполнения задачи обязательно для заполнения</string>
+    <string name="task_time_nil_error">Время выполнения задачи должно быть больше 0</string>
+    <string name="task_incorrect_date">Некорректный формат даты. Формат: год-месяц-день.</string>
+    <string name="task_start_date_incorrect">Некорректный формат даты начала задачи. Формат: год-месяц-день.</string>
+    <string name="task_end_date_incorrect">Некорректный формат даты окончания задачи. Формат: год-месяц-день.</string>
+    <string name="task_id">Идентификатор</string>
+    <string name="task_project">Проект</string>
+    <string name="task_name">Название</string>
+    <string name="task_time">Работа (часы)</string>
+    <string name="task_start_date">Дата начала</string>
+    <string name="task_end_date">Дата окончания</string>
+    <string name="task_status">Статус</string>
+    <string name="task_employee">Исполнитель</string>
+    <string name="delete_task_header">Удаление задачи</string>
+    <string name="delete_task_message">Вы уверены, что хотите удалить задачу?</string>
+
+    <!-- Статус задачи -->
+    <string name="status_not_started">Не начата</string>
+    <string name="status_in_process">В процессе</string>
+    <string name="status_completed">Завершена</string>
+    <string name="status_postponed">Отложена</string>
+
+    <!-- Кнопки -->
+    <string name="update">Обновить</string>
+    <string name="edit">Изменить</string>
+    <string name="add">Добавить</string>
+    <string name="delete">Удалить</string>
+    <string name="update_list">Обновить список</string>
+    <string name="ok">ОК</string>
+    <string name="cancel">Отмена</string>
+    <string name="save">Сохранить</string>
+
+    <!-- Заголовки страниц -->
+    <string name="settings_app_header">Настройки приложения</string>
+
+    <!-- Заголовки полей -->
+    <string name="choice_employee">Выберите исполнителя</string>
+    <string name="choice_project">Выберите проект</string>
+    <string name="field_job_time">Работа</string>
+    <string name="id">ID</string>
+    <string name="surname">Фамилия</string>
+    <string name="name">Имя</string>
+    <string name="position">Должность</string>
+    <string name="title">Название</string>
+    <string name="short_title">Сокр. название</string>
+    <string name="status">Статус</string>
+    <string name="project">Проект</string>
+    <string name="count_item">Количество записей на странице</string>
+    <string name="url_address">URL сервера</string>
+
+    <!-- Сообщения ошибок -->
+    <string name="setting_url_error">Адрес сервера обязателен для заполнения</string>
+    <string name="setting_count_error">Количество записей на странице обязательно для заполнения</string>
+    <string name="setting_count_required_error">Количество записей на странице должно быть больше 0</string>
+    <string name="incorrect_url_error">URL адрес некорректный</string>
+    <string name="config_file_error">Не найден файл config.properties</string>
+
+    <!-- Индикатор пустого списка -->
+    <string name="empty_list">Список пуст</string>
+
+    <!-- Содержимое диалогов -->
+    <string name="please_wait">Пожалуйста, подождите…</string>
+    <string name="loading_data">Загрузка данных…</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+
+    <!-- Информационные сообщения -->
+    <string name="settings_saved">Настройки сохранены</string>
+
+</resources>

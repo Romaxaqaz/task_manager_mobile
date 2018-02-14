@@ -1,0 +1,90 @@
+import groovy.json.JsonSlurper
+
+apply plugin: 'com.android.application'
+apply plugin: 'checkstyle'
+
+def versionPropsFile = file("${project.rootDir}/version.txt")
+def buildPath = file("${project.rootDir}/build")
+def versionBuild
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'TaskAppAlias'
+            keyPassword 'android'
+            storeFile file("${project.projectDir}/TaskAppKeyStore.jks")
+            storePassword 'android'
+        }
+    }
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "com.example.panteleevrv.trainigtaskandroid"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "$versionBuild"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = file("$buildPath/" + versionBuild + ".apk")
+        }
+    }
+}
+
+check.dependsOn 'checkstyle'
+assemble.dependsOn 'loadVersion'
+assemble.dependsOn 'parsJson'
+
+task checkstyle(type: Checkstyle) {
+    configFile file("${project.rootDir}/config/checkstyle.xml")
+    configProperties.checkstyleConfigDir = configFile.parentFile
+    ignoreFailures = false
+    source 'src/main/java'
+    include '**/*.java'
+    exclude '**/gen/**'
+    exclude '**/R.java'
+    exclude '**/BuildConfig.java'
+    classpath = files()
+}
+
+task loadVersion {
+    println "Loading version from $versionPropsFile"
+
+    if (!versionPropsFile.exists()) {
+        throw new GradleException("File $versionPropsFile not found")
+    }
+    if (!versionPropsFile.canRead()) {
+        throw new GradleException("Could not read file $versionPropsFile")
+    }
+
+    def Properties versionProps = new Properties()
+    versionProps.load(new FileInputStream(versionPropsFile))
+    versionBuild = versionProps['version']
+
+    if (versionBuild == null) {
+        throw new GradleException("Could not read 'versionBuild' param")
+    }
+    println "Version: $versionBuild"
+}
+
+task exportGoogleServicesProperty {
+    def servicesJson = new File("$projectDir/google-services.json")
+    File propertiesFile = file("$projectDir/src/main/assets/application.properties");
+
+    def json = new JsonSlurper().parseText(servicesJson.text)
+    def properties = new Properties()
+
+    properties.load(propertiesFile.newDataInputStream())
+    properties.setProperty("PROJECT_NUMBER", json.project_info.project_number)
+    properties.setProperty("PROJECT_ID", json.project_info.project_id)
+    properties.setProperty("STORAGE_BUCKET", json.project_info.storage_bucket)
+    properties.store(propertiesFile.newWriter(), null)
+}

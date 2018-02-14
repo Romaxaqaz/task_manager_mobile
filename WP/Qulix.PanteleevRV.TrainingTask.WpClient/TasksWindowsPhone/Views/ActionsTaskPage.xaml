@@ -1,0 +1,297 @@
+﻿<!--region namespace -->
+<phone:PhoneApplicationPage
+    x:Class="TasksWindowsPhone.Views.ActionsTaskPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:converters="clr-namespace:TasksWindowsPhone.Converters"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+    <!--endregion-->
+
+    <!--region Page resoureces -->
+
+    <phone:PhoneApplicationPage.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--endregion -->
+
+    <!--region Page Content -->
+
+    <Grid x:Name="TaskOperationGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid x:Name="GridHeader"
+              Background="SteelBlue"
+              Height="50">
+            <TextBlock x:Name="PageHeaderTextBlock"
+                       Text="{Binding OperationName}"
+                       FontSize="26"
+                       Margin="6"
+                       TextAlignment="Center" />
+        </Grid>
+
+        <!-- Content -->
+        <ScrollViewer x:Name="ScrollViewer"
+                      Loaded="ScrollViewer_OnLoaded"
+                      Grid.Row="1">
+
+            <StackPanel x:Name="MainStackPanel"
+                        VerticalAlignment="Top"
+                        Margin="12">
+
+                <!-- Task name textbox -->
+                <StackPanel Margin="2">
+                    <TextBlock Text="{Binding Path=LocalizedResources.TaskNameHeader, Source={StaticResource LocalizedStrings}}"
+                               Style="{StaticResource HeaderTextBlockStyle}" />
+                    <TextBox x:Name="TaskNameTextBox"
+                             Text="{Binding Task.Name}"
+                             Style="{StaticResource MinimalTextBox}"
+                             GotFocus="TestBox_GotFocus"
+                             LostFocus="TestBox_LostFocus" />
+                </StackPanel>
+
+                <!-- Job time textbox -->
+                <StackPanel Margin="2">
+                    <TextBlock Text="{Binding Path=LocalizedResources.JobTimeHeader, Source={StaticResource LocalizedStrings}}"
+                               Style="{StaticResource HeaderTextBlockStyle}" />
+                    <TextBox x:Name="JobTimeTextBox"
+                             InputScope="Number"
+                             Text="{Binding Task.JobTime}"
+                             Style="{StaticResource MinimalTextBox}"
+                             MaxLength="9"
+                             GotFocus="TestBox_GotFocus"
+                             LostFocus="TestBox_LostFocus" />
+                </StackPanel>
+
+                <!-- Start date control-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Margin="2,0,0,6"
+                                VerticalAlignment="Center"
+                                Grid.Column="0">
+                        <TextBlock Text="{Binding Path=LocalizedResources.StartDateHeader, Source={StaticResource LocalizedStrings}}"
+                                   Style="{StaticResource HeaderTextBlockStyle}" />
+                       
+                        <TextBox x:Name="StartDateTextBox"
+                                 Text="{Binding Task.StartDate, StringFormat={StaticResource DateFormat}}"
+                                 Tag="{Binding Path=LocalizedResources.StartDateHeader, Source={StaticResource LocalizedStrings}}"
+                                 Style="{StaticResource MinimalTextBox}"
+                                 MaxLength="10"
+                                 InputScope="TelephoneAreaCode"
+                                 GotFocus="TestBox_GotFocus"
+                                 LostFocus="TestBox_LostFocus" />
+                    </StackPanel>
+
+                    <toolkit:DatePicker x:Name="StartDatePicker"
+                                        Value="{Binding StartDate, Mode=TwoWay}"
+                                        ValueStringFormat="{StaticResource DateFormat}"
+                                        Tag="{Binding Path=LocalizedResources.StartDateHeader, Source={StaticResource LocalizedStrings}}"
+                                        Grid.Column="1"
+                                        VerticalAlignment="Bottom"
+                                        PickerPageUri="/CustomControls/CalendarControl/CalendarPage.xaml"
+                                        Foreground="{StaticResource PhoneForegroundBrush}"
+                                        Margin="2" />
+                </Grid>
+
+                <!-- Date end control-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Margin="2,0,0,6" Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Path=LocalizedResources.DateEndHeader ,Source={StaticResource LocalizedStrings}}"
+                                   Style="{StaticResource HeaderTextBlockStyle}" />
+                    
+                        <TextBox x:Name="DateEndTextBox"
+                                 Text="{Binding Task.EndDate, StringFormat={StaticResource DateFormat}}"
+                                 Tag="{Binding Path=LocalizedResources.DateEndHeader ,Source={StaticResource LocalizedStrings}}"
+                                 Style="{StaticResource MinimalTextBox}"
+                                 MaxLength="10"
+                                 InputScope="TelephoneAreaCode"
+                                 GotFocus="TestBox_GotFocus"
+                                 LostFocus="TestBox_LostFocus" />
+                    </StackPanel>
+
+                    <toolkit:DatePicker x:Name="EndDatePicker"
+                                        Value="{Binding EndDate, Mode=TwoWay}"
+                                        ValueStringFormat="{StaticResource DateFormat}"
+                                        Tag="{Binding Path=LocalizedResources.DateEndHeader ,Source={StaticResource LocalizedStrings}}"
+                                        VerticalAlignment="Bottom"
+                                        PickerPageUri="/CustomControls/CalendarControl/CalendarPage.xaml"
+                                        Margin="2"
+                                        Grid.Column="1" />
+                </Grid>
+
+                <!-- Status listpicker -->
+                <toolkit:ListPicker x:Name="StatusListPicker"
+                                    Header="{Binding Path=LocalizedResources.TaskStatusHeader, Source={StaticResource LocalizedStrings}}"
+                                    BorderThickness="0"
+                                    Margin="4"
+                                    Style="{StaticResource CustomListPicker}"
+                                    Loaded="StatusListPicker_OnLoaded">
+                    <toolkit:ListPicker.Items>
+                        <toolkit:ListPickerItem>
+                            <Border BorderBrush="Gray"
+                                    BorderThickness="0,0,0,1" Padding="0">
+                                <Grid toolkit:TiltEffect.IsTiltEnabled="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="../Assets/Ico/questionmark.png"
+                                           Margin="4"
+                                           Width="32"
+                                           Height="32" />
+
+                                    <TextBlock Text="Not Started"
+                                               VerticalAlignment="Center"
+                                               FontSize="20"
+                                               Margin="2"
+                                               Foreground="White"
+                                               Grid.Column="1" />
+                                </Grid>
+                            </Border>
+                        </toolkit:ListPickerItem>
+                        <toolkit:ListPickerItem>
+                            <Border BorderBrush="Gray"
+                                    BorderThickness="0,0,0,1"
+                                    Padding="0">
+                                <Grid toolkit:TiltEffect.IsTiltEnabled="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="../Assets/Ico/feature.alarm.png"
+                                           Margin="4"
+                                           Width="32"
+                                           Height="32" />
+
+                                    <TextBlock Text="In Process"
+                                               VerticalAlignment="Center"
+                                               FontSize="20"
+                                               Margin="2"
+                                               Foreground="White"
+                                               Grid.Column="1" />
+                                </Grid>
+                            </Border>
+                        </toolkit:ListPickerItem>
+                        <toolkit:ListPickerItem>
+                            <Border BorderBrush="Gray"
+                                    BorderThickness="0,0,0,1" Padding="0">
+                                <Grid toolkit:TiltEffect.IsTiltEnabled="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="../Assets/Ico/check.png"
+                                           Margin="4"
+                                           Width="32"
+                                           Height="32" />
+
+                                    <TextBlock Text="Completed"
+                                               VerticalAlignment="Center"
+                                               FontSize="20"
+                                               Margin="2"
+                                               Foreground="White"
+                                               Grid.Column="1" />
+                                </Grid>
+                            </Border>
+                        </toolkit:ListPickerItem>
+                        <toolkit:ListPickerItem>
+                            <Border BorderBrush="Gray"
+                                    BorderThickness="0,0,0,1" Padding="0">
+                                <Grid toolkit:TiltEffect.IsTiltEnabled="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="../Assets/Ico/refresh.png"
+                                           Margin="4"
+                                           Width="32"
+                                           Height="32" />
+
+                                    <TextBlock Text="Postponed"
+                                               VerticalAlignment="Center"
+                                               FontSize="20"
+                                               Margin="2"
+                                               Foreground="White"
+                                               Grid.Column="1" />
+                                </Grid>
+                            </Border>
+                        </toolkit:ListPickerItem>
+                    </toolkit:ListPicker.Items>
+                </toolkit:ListPicker>
+
+                <!-- Actions -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="ActionTaskButton"
+                            Content="{Binding OperationName}"
+                            Style="{StaticResource TaskButton}"
+                            Click="ActionTaskButton_Click"
+                            Grid.Column="1" />
+
+                    <Button x:Name="CancelButton"
+                            Content="{Binding Path=LocalizedResources.CancelButton ,Source={StaticResource LocalizedStrings}}"
+                            Style="{StaticResource TaskButton}"
+                            Grid.Column="0"
+                            Click="CancelButton_Click" />
+                </Grid>
+
+                <Button x:Name="DeleteButton"
+                        Content="DELETE"
+                        Style="{StaticResource TaskButton}"
+                        Visibility="{Binding ChangeTask, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Click="DeleteButton_Click" />
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+
+    <!--endregion -->
+
+    <!--region Page transition -->
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SwivelTransition />
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SwivelTransition />
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <!-- endregion -->
+
+</phone:PhoneApplicationPage>

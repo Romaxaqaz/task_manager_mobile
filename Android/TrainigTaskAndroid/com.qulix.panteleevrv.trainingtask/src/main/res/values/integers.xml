@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="time_length">9</integer>
+    <integer name="date_length">10</integer>
+
+    <!-- Employee item field -->
+    <integer name="employee_id_weight">4</integer>
+    <integer name="employee_name_weight">3</integer>
+    <integer name="employee_surname_weight">3</integer>
+    <integer name="employee_position_weight">3</integer>
+
+    <!-- Project item field -->
+    <integer name="project_id_weight">3</integer>
+    <integer name="project_title_weight">2</integer>
+    <integer name="project_short_title_weight">2</integer>
+
+    <!-- Task item  field -->
+    <integer name="task_id_weight">4</integer>
+    <integer name="task_status_weight">3</integer>
+    <integer name="task_project_weight">3</integer>
+    <integer name="task_name_weight">3</integer>
+
+</resources>

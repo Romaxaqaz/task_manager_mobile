@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accentTextColor">#878787</color>
+    <color name="accentColor">#c1c1c1</color>
+    <color name="hintColor">#000000</color>
+    <color name="headerColor">#000000</color>
+</resources>

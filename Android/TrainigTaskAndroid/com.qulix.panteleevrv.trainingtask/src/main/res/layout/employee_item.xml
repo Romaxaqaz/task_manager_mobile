@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/list_item_margin"
+            android:layout_marginBottom="@dimen/list_item_margin"
+            style="@style/HorizontalLinear">
+
+        <TextView
+                android:id="@+id/employeeItemId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="@integer/employee_id_weight"
+                android:layout_gravity="center"
+                style="@style/ListItemText" />
+
+        <TextView
+                android:id="@+id/employeeItemName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="@integer/employee_name_weight"
+                android:layout_gravity="center"
+                style="@style/ListItemText" />
+
+        <TextView
+                android:id="@+id/employeeItemSurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="@integer/employee_surname_weight"
+                android:layout_gravity="center"
+                style="@style/ListItemText" />
+
+        <TextView
+                android:id="@+id/employeeItemPosition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="@integer/employee_position_weight"
+                android:layout_gravity="center"
+                style="@style/ListItemText" />
+
+    </LinearLayout>
+
+</LinearLayout>

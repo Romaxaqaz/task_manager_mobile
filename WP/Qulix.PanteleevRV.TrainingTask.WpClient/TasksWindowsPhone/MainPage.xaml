@@ -1,0 +1,179 @@
+﻿<!--region namespace -->
+<phone:PhoneApplicationPage
+    x:Name="TaskListPage"
+    x:Class="TasksWindowsPhone.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:converters="clr-namespace:TasksWindowsPhone.Converters"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+    <!--endregion-->
+
+    <!--region Page resoureces -->
+
+    <phone:PhoneApplicationPage.Resources>
+        <converters:StatusToIcoConverter x:Key="StatusToIcoConverter" />
+
+        <Style x:Key="ImageTaskListItem" 
+               TargetType="Image">
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+
+        <DataTemplate x:Key="TaskListItemDataTemplate">
+            <Border BorderBrush="{StaticResource DefaultInforamtionForegroundBrush}"
+                    BorderThickness="0,0,0,1"
+                    Margin="0,0,0,2">
+                      <Grid x:Name="TasksDataGrid"
+                                  toolkit:TiltEffect.IsTiltEnabled="True">
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu x:Name="TaskMenu">
+                                        <toolkit:MenuItem x:Name="EditContextMenu"
+                                                          Tag="{Binding}"
+                                                          Header="Edit task"
+                                                          Click="EditContextMenu_OnClick" />
+                                        <toolkit:MenuItem x:Name="DeleteContextMenu"
+                                                          Tag="{Binding}"
+                                                          Header="Delete task"
+                                                          Click="DeleteContextMenu_OnClick" />
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Status ico -->
+                                <Image Source="{Binding Status, Converter={StaticResource StatusToIcoConverter}}"
+                                       Style="{StaticResource ImageTaskListItem}" />
+
+                                <!-- Task name -->
+                                <TextBlock Text="{Binding Name}"
+                                           VerticalAlignment="Center"
+                                           FontSize="24"
+                                           TextWrapping="Wrap"
+                                           TextTrimming="WordEllipsis"
+                                           Foreground="{StaticResource PhoneForegroundBrush}"
+                                           Margin="4"
+                                           Grid.Column="1" />
+
+                                <!-- Context menu ico -->
+                                <Image Source="Assets/Ico/select.png"
+                                       Style="{StaticResource ImageTaskListItem}"
+                                       Grid.Column="2" />
+                            </Grid>
+            </Border>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--endregion -->
+
+    <!--region Page Content -->
+
+    <Grid x:Name="MainPageGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Background="{StaticResource AccentAppBackGroundColorBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="{Binding Path=LocalizedResources.MainPageHeader, Source={StaticResource LocalizedStrings}}"
+                       FontSize="24"
+                       Margin="24,12,0,12"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center" />
+        </Grid>
+
+        <!-- Task list -->
+        <ListBox x:Name="ListViewTasks"
+                 ItemTemplate="{StaticResource TaskListItemDataTemplate}"
+                 Margin="12,0,12,0"
+                 SelectionChanged="ListViewTasks_OnSelectionChanged"
+                 Grid.Row="1">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+        <!-- Empty list indicator -->
+        <StackPanel x:Name="ListContainIndicator"
+                    Visibility="Collapsed"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Grid.Row="1">
+            <Image Source="Toolkit.Content/ApplicationBar.Select.png"
+                   Width="80"
+                   Height="80" />
+            <TextBlock Text="{Binding Path=LocalizedResources.EmptyList, Source={StaticResource LocalizedStrings}}" />
+        </StackPanel>
+    </Grid>
+
+    <!--endregion-->
+
+    <!--region Application bar -->
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="False"
+                              Mode="Default"
+                              IsMenuEnabled="True"
+                              BackgroundColor="{StaticResource AccentAppBackGroundColor}">
+            <shell:ApplicationBarIconButton x:Name="AddNewTaskAppButton"
+                                            IconUri="/Assets/Ico/add.png"
+                                            Text="Add task"
+                                            Click="AddNewTaskButton_Click" />
+            <shell:ApplicationBarIconButton x:Name="UpdateButton"
+                                            IconUri="/Assets/Ico/refresh.png"
+                                            Text="update"
+                                            Click="UpdateButton_Click" />
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="SettingButton"
+                                              Text="settings"
+                                              Click="SettingButton_Click" />
+                <shell:ApplicationBarMenuItem x:Name="AboutPageAppBarButton"
+                                              Text="about"
+                                              Click="AboutButton_Click" />
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <!--endregion -->
+
+    <!--region Page transition -->
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SwivelTransition />
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SwivelTransition />
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+
+    <!-- endregion -->
+
+</phone:PhoneApplicationPage>
